@@ -95,8 +95,8 @@ def genHtml(partsSpecialists, allSlugs):
     for person, slug in zip(partsSpecialists, allSlugs):
         tempHtml = ""
         tempHtml += f'<div class="container"><div class="main-body"> <!-- Breadcrumb --><nav aria-label="breadcrumb" class="main-breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="/about-conequip-team">About Our Team</a></li><li class="breadcrumb-item active" aria-current="page">'
-        tempHtml += f'{person["name"]}</li></ol></nav><!-- /Breadcrumb --><div class="row gutters-sm"><div class="col-lg-12 mb-5"><div class="card bg-light"><div class="card-body"><div class="d-flex flex-column align-items-center text-center"> <img src="/pub/media/wysiwyg/conequip/employees/2022/'
-        tempHtml += f'{slug}.jpg" alt="Admin" class="rounded-circle border" width="150"><div class="mt-3"><h4>'
+        tempHtml += f'{person["name"]}</li></ol></nav><!-- /Breadcrumb --><div class="row gutters-sm"><div class="col-lg-12 mb-5"><div class="card bg-light"><div class="card-body"><div class="d-flex flex-column align-items-center text-center"> <img src="{{{{media url="wysiwyg/conequip/employees/2022/'
+        tempHtml += f'{person["name"].replace(" ", "-").lower()}.jpg"}}}}" alt="Admin" class="rounded-circle border" width="150"><div class="mt-3"><h4>'
         tempHtml += f'{person["name"]}</h4><p class="text-secondary mb-1">'
         tempHtml += f'{person["job_title"]}</p><a href="/vcf/'
         tempHtml += f'{slug}.vcf"><button class="btn btn-primary m-2"><i class="fa fa-address-card-o"></i> Download Contact To Your Phone</button></a><br><a href="mailto:'
@@ -119,7 +119,7 @@ def genHtml(partsSpecialists, allSlugs):
                 if line != "":
                     tempHtml += f"<p>{line}</p>"
         else:
-            tempHtml += f'<p>Coming Soon...</p>'
+            tempHtml += f'<p></p>'
         tempHtml += f'</div></div></div></div></div></div></div></div>'
         allHtml.append(tempHtml)
     return allHtml
